@@ -1,81 +1,227 @@
-/* Genel Stil */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+/* Genel Ayarlar */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 /* Header */
 header {
     background-color: #4CAF50;
     color: white;
-    padding: 20px;
+    padding: 40px;
     text-align: center;
+    animation: fadeIn 2s ease-in-out;
+    position: relative;
 }
 
-header nav ul {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    padding: 0;
-    list-style: none;
+/* Header Content */
+.header-content {
+    animation: slideIn 2s ease-out;
 }
 
-header nav ul li {
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-header nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Sayfa İçeriği */
-section {
-    margin: 20px auto;
-    padding: 20px;
-    width: 80%;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-section h2 {
-    margin-top: 0;
-}
-
-/* Fotoğraf */
 .profile-img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    margin-top: 20px;
+    animation: bounce 2s infinite alternate;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
+
+/* Navigasyon Menüsü */
+nav ul {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    animation: navIn 2s ease-out;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: #333;
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+/* Animasyon: Menü Girişi */
+@keyframes navIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sayfa İçeriği */
+section {
+    margin: 40px auto;
+    padding: 30px;
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1.5s forwards;
+}
+
+section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sayfada Daha Sonra Görünecek Bölümler */
+#education {
+    animation-delay: 0.5s;
+}
+
+#experience {
+    animation-delay: 1s;
+}
+
+/* Beceriler */
+.skill {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    height: 10px;
+    width: 100%;
+    overflow: hidden;
     margin-top: 10px;
+}
+
+.progress {
+    background-color: #4CAF50;
+    height: 100%;
+    border-radius: 20px;
+    animation: progressFill 2s ease-out forwards;
+}
+
+@keyframes progressFill {
+    from {
+        width: 0;
+    }
+    to {
+        width: 90%; /* Bu değeri CSS içinde belirtilen % ile değiştir */
+    }
 }
 
 /* Footer */
 footer {
     background-color: #4CAF50;
     color: white;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+    transform: translateY(10px);
 }
 
-/* Responsive Tasarım */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobil Uyumluluk */
 @media (max-width: 768px) {
-    header nav ul {
+    header {
+        padding: 20px;
+    }
+
+    .header-content {
+        text-align: center;
+    }
+
+    nav ul {
         flex-direction: column;
     }
 
     section {
         width: 90%;
     }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Scroll Efekti */
+html {
+    scroll-behavior: smooth;
 }
