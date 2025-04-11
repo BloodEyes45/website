@@ -78,7 +78,7 @@ ul {
   transition: opacity 0.5s ease, visibility 0.5s;
 }
 
-/* Animasyonlar */
+/* Animasyonlar  */
 @keyframes bounce {
   to {
     transform: translateY(-10px);
