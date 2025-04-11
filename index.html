@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Semih'in CV'si - Web Developer | Python Developer">
-    <meta name="keywords" content="Semih, CV, Web Developer, Python Developer">
-    <meta name="author" content="Semih">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Semih'in CV'si</title>
-    <link rel="stylesheet" href="styles.css"> <!-- CSS dosyasını bağla -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <img src="your-photo.jpg" alt="Semih'in Fotoğrafı" class="profile-img">
-        <h1>Semih'in CV'si</h1>
-        <p>Web Developer | Python Developer | Sağlık Öğrencisi</p>
+        <div class="header-content">
+            <img src="your-photo.jpg" alt="Semih'in Fotoğrafı" class="profile-img">
+            <h1>Semih'in CV'si</h1>
+            <p>Web Developer | Python Developer | Sağlık Öğrencisi</p>
+        </div>
         <nav>
             <ul>
                 <li><a href="#education">Eğitim Geçmişi</a></li>
@@ -24,6 +25,7 @@
         </nav>
     </header>
 
+    <!-- Eğitim Geçmişi -->
     <section id="education">
         <h2>Eğitim Geçmişi</h2>
         <ul>
@@ -32,6 +34,7 @@
         </ul>
     </section>
 
+    <!-- İş Deneyimi -->
     <section id="experience">
         <h2>İş Deneyimleri</h2>
         <ul>
@@ -40,26 +43,40 @@
         </ul>
     </section>
 
+    <!-- Beceriler -->
     <section id="skills">
         <h2>Beceriler</h2>
-        <ul>
-            <li>Python</li>
-            <li>HTML, CSS, JavaScript</li>
-            <li>Web Development</li>
-            <li>Database Management</li>
-        </ul>
+        <div class="skill">
+            <span>Python</span>
+            <div class="progress-bar">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <span>HTML/CSS</span>
+            <div class="progress-bar">
+                <div class="progress" style="width: 80%;"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <span>JavaScript</span>
+            <div class="progress-bar">
+                <div class="progress" style="width: 70%;"></div>
+            </div>
+        </div>
     </section>
 
+    <!-- İletişim Bilgileri -->
     <section id="contact">
         <h2>İletişim Bilgileri</h2>
-        <ul>
-            <li>Email: semih@example.com</li>
-            <li>Telefon: +90 555 555 55 55</li>
-        </ul>
+        <p>Email: semih@example.com</p>
+        <p>Telefon: +90 555 555 5555</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com">Semih'in LinkedIn Profili</a></p>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Semih</p>
+        <p>&copy; 2025 Semih | Web Developer</p>
     </footer>
 </body>
 </html>
