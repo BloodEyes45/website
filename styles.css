@@ -132,3 +132,42 @@ footer {
     opacity: 0;
     animation: fadeInFooter 2s ease-out forwards;
 }
+
+/* Mobil Uyumlu Tasarım */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    .header-content h1 {
+        font-size: 24px;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    section {
+        width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
