@@ -1,185 +1,92 @@
-/* Genel Ayarlar */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
+/* Genel ayarlar */
 body {
-    background-color: #121212;
-    color: white;
-    font-size: 16px;
-    line-height: 1.6;
-    transition: all 0.3s ease;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
 }
 
-a {
-    color: #4CAF50;
-    text-decoration: none;
-    transition: all 0.3s ease;
+.container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
 }
 
-a:hover {
-    color: #e0e0e0;
+/* Başlıklar */
+h1, h2 {
+  color: #00ffee;
 }
 
-/* Header */
-header {
-    background: linear-gradient(45deg, #2c3e50, #34495e);
-    color: white;
-    padding: 60px;
-    text-align: center;
-    border-bottom: 3px solid #2980b9;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+/* Liste */
+ul {
+  list-style: square;
+  margin-left: 20px;
 }
 
-.header-content {
-    animation: slideIn 2s ease-out;
+/* 🚀 LOADER STİLİ */
+.loader-wrapper {
+  position: fixed;
+  inset: 0;
+  background-color: #0d0d0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
 }
 
-.profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-top: 20px;
-    border: 5px solid #fff;
-    transition: all 0.3s ease;
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.profile-img:hover {
-    transform: scale(1.1);
+.loader .dot {
+  width: 20px;
+  height: 20px;
+  background-color: #00ffee;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
 }
 
-/* Navigasyon Menüsü */
-nav ul {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
+.loader .dots {
+  display: flex;
+  margin-left: 10px;
 }
 
-nav ul li {
-    margin: 0 20px;
+.loader .dots span {
+  width: 10px;
+  height: 10px;
+  background-color: #00ffee;
+  border-radius: 50%;
+  margin: 0 3px;
+  opacity: 0.3;
+  animation: blink 1.2s infinite;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
+.loader .dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader .dots span:nth-child(3) {
+  animation-delay: 0.4s;
 }
 
-nav ul li a:hover {
-    background-color: #2980b9;
-    transform: scale(1.1);
+/* Fade out */
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s;
 }
 
-/* Sayfa İçeriği */
-section {
-    margin: 40px auto;
-    padding: 30px;
-    width: 80%;
-    background-color: #222;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
-    transition: all 0.3s ease;
+/* Animasyonlar */
+@keyframes bounce {
+  to {
+    transform: translateY(-10px);
+  }
 }
 
-section:hover {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-}
-
-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #ecf0f1;
-}
-
-/* Beceriler */
-.skill {
-    margin: 15px 0;
-}
-
-.progress-bar {
-    background-color: #7f8c8d;
-    border-radius: 5px;
-    width: 100%;
-    height: 10px;
-    margin-top: 5px;
-}
-
-.progress {
-    background-color: #2ecc71;
-    height: 100%;
-    border-radius: 5px;
-    transition: width 0.5s ease-in-out;
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    font-size: 14px;
-}
-
-/* Hover Efektleri */
-section h2:hover {
-    color: #2980b9;
-}
-
-footer a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #e0e0e0;
-}
-
-/* Mobil Uyumlu Tasarım */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-
-    header {
-        padding: 40px;
-    }
-
-    .header-content h1 {
-        font-size: 24px;
-    }
-
-    .profile-img {
-        width: 120px;
-        height: 120px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        margin-top: 10px;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    section {
-        width: 90%;
-        margin: 20px auto;
-        padding: 20px;
-    }
-
-    footer {
-        font-size: 12px;
-    }
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
 }
