@@ -56,3 +56,13 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+    }
+
+    section {
+        width: 90%;
+    }
+}
