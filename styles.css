@@ -7,8 +7,10 @@
 }
 
 body {
-    background-color: #121212 !important;
-    color: white !important;
+    background-color: #121212;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
 
 a {
@@ -100,18 +102,6 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Menü Girişi Animasyonu */
-@keyframes navIn {
-    from {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
 /* Sayfa İçeriği */
 section {
     margin: 40px auto;
@@ -130,56 +120,6 @@ section h2 {
     margin-bottom: 10px;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Sayfalara Geçişler */
-#education {
-    animation-delay: 0.5s;
-}
-
-#experience {
-    animation-delay: 1s;
-}
-
-/* Beceriler */
-.skill {
-    margin-bottom: 20px;
-}
-
-.progress-bar {
-    background-color: #444;
-    border-radius: 20px;
-    height: 10px;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 10px;
-}
-
-.progress {
-    background-color: #4CAF50;
-    height: 100%;
-    border-radius: 20px;
-    animation: progressFill 2s ease-out forwards;
-}
-
-@keyframes progressFill {
-    from {
-        width: 0;
-    }
-    to {
-        width: 90%; /* Burada %yi değiştir */
-    }
-}
-
 /* Footer */
 footer {
     background-color: #333;
@@ -191,44 +131,4 @@ footer {
     width: 100%;
     opacity: 0;
     animation: fadeInFooter 2s ease-out forwards;
-}
-
-@keyframes fadeInFooter {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Mobil Uyumluluk */
-@media (max-width: 768px) {
-    header {
-        padding: 20px;
-    }
-
-    .header-content {
-        text-align: center;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    section {
-        width: 90%;
-    }
-
-    .profile-img {
-        width: 120px;
-        height: 120px;
-    }
-}
-
-/* Scroll Efekt */
-html {
-    scroll-behavior: smooth;
 }
