@@ -46,6 +46,18 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+section h2 {
+    margin-top: 0;
+}
+
+/* Fotoğraf */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
 /* Footer */
 footer {
     background-color: #4CAF50;
@@ -57,6 +69,7 @@ footer {
     width: 100%;
 }
 
+/* Responsive Tasarım */
 @media (max-width: 768px) {
     header nav ul {
         flex-direction: column;
