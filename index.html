@@ -1,82 +1,66 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Semih'in CV'si</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Semih'in CV'si</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <img src="your-photo.jpg" alt="Semih'in Fotoğrafı" class="profile-img">
-            <h1>Semih'in CV'si</h1>
-            <p>Web Developer | Python Developer | Sağlık Öğrencisi</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#education">Eğitim Geçmişi</a></li>
-                <li><a href="#experience">İş Deneyimleri</a></li>
-                <li><a href="#skills">Beceriler</a></li>
-                <li><a href="#contact">İletişim Bilgileri</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Eğitim Geçmişi -->
-    <section id="education">
-        <h2>Eğitim Geçmişi</h2>
-        <ul>
-            <li><strong>Semih Lise</strong> - Lise Son Sınıf (2025)</li>
-            <li><strong>Sağlık Okulu</strong> - 4. Sınıf (2023)</li>
-        </ul>
+  <!-- ⏳ YÜKLEYİCİ -->
+  <div class="loader-wrapper">
+    <div class="loader">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🌑 ANA İÇERİK -->
+  <div class="container">
+    <h1>Semih'in CV'si</h1>
+    <p>Merhaba, bu benim kişisel CV sitemdir!</p>
+
+    <section>
+      <h2>Eğitim Geçmişi</h2>
+      <ul>
+        <li>Lise - Sağlık Alanı</li>
+      </ul>
     </section>
 
-    <!-- İş Deneyimi -->
-    <section id="experience">
-        <h2>İş Deneyimleri</h2>
-        <ul>
-            <li><strong>Python Developer</strong> - XYZ Teknoloji (2024-2025)</li>
-            <li><strong>Web Geliştirici</strong> - ABC Firması (2023-2024)</li>
-        </ul>
+    <section>
+      <h2>İş Deneyimleri</h2>
+      <ul>
+        <li>Henüz iş deneyimim bulunmamakta.</li>
+      </ul>
     </section>
 
-    <!-- Beceriler -->
-    <section id="skills">
-        <h2>Beceriler</h2>
-        <div class="skill">
-            <span>Python</span>
-            <div class="progress-bar">
-                <div class="progress" style="width: 90%;"></div>
-            </div>
-        </div>
-        <div class="skill">
-            <span>HTML/CSS</span>
-            <div class="progress-bar">
-                <div class="progress" style="width: 80%;"></div>
-            </div>
-        </div>
-        <div class="skill">
-            <span>JavaScript</span>
-            <div class="progress-bar">
-                <div class="progress" style="width: 70%;"></div>
-            </div>
-        </div>
+    <section>
+      <h2>Beceriler</h2>
+      <ul>
+        <li>Python</li>
+        <li>Bilgisayar Kullanımı</li>
+      </ul>
     </section>
 
-    <!-- İletişim Bilgileri -->
-    <section id="contact">
-        <h2>İletişim Bilgileri</h2>
-        <p>Email: semih@example.com</p>
-        <p>Telefon: +90 555 555 5555</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com">Semih'in LinkedIn Profili</a></p>
+    <section>
+      <h2>İletişim Bilgileri</h2>
+      <ul>
+        <li>Email: semih@example.com</li>
+      </ul>
     </section>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Semih | Web Developer</p>
-    </footer>
+  <!-- 🔁 YÜKLEYİCİ KALDIRMA -->
+  <script>
+    window.addEventListener("load", () => {
+      document.querySelector(".loader-wrapper").classList.add("fade-out");
+    });
+  </script>
+
 </body>
 </html>
