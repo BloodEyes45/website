@@ -1,73 +1,137 @@
-body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
-  color: #f5f5f5;
+}
+
+body {
+  background: #1e1e1e;
+  color: #ffc0cb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
   overflow-x: hidden;
+  position: relative;
 }
 
 .container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-  position: relative;
+  padding: 2rem;
   z-index: 1;
-  text-align: center;
 }
 
-h1, h2 {
-  color: #ff69b4;
-  text-shadow: 0 0 10px #ff69b4;
-  margin-bottom: 20px;
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-p {
-  font-size: 1.1em;
-  line-height: 1.7;
-  color: #ddd;
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-/* Kalp Animasyonları */
-.heart {
+.music-btn, .love-btn, .surprise-btn {
+  margin: 10px;
+  padding: 12px 25px;
+  background: #ff5e78;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.music-btn:hover, .love-btn:hover, .surprise-btn:hover {
+  background: #ff7991;
+}
+
+.hidden-message {
+  margin-top: 20px;
+  display: none;
+  font-size: 1.2rem;
+}
+
+.countdown {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #ffe4ec;
+}
+
+#timer {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.hearts-bg {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #ff69b4;
-  transform: rotate(45deg);
-  animation: float 6s infinite ease-in-out;
-  border-radius: 4px;
-  opacity: 0.7;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.imgur.com/qI9Q9QV.gif'); /* ✔️ ÇALIŞAN KALP ANİMASYONLU BACKGROUND */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 0;
 }
 
-.heart::before, .heart::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #ff69b4;
-  border-radius: 50%;
+/* Galeri */
+.gallery {
+  margin-top: 40px;
 }
 
-.heart::before {
-  top: -10px;
-  left: 0;
+.gallery h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
 }
 
-.heart::after {
-  left: -10px;
-  top: 0;
+.photos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-@keyframes float {
-  0% {
-    bottom: 0;
-    opacity: 1;
-    transform: translateX(0) rotate(45deg);
-  }
-  100% {
-    bottom: 100vh;
-    opacity: 0;
-    transform: translateX(50px) rotate(45deg);
-  }
+.photos img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  border: 2px solid #ff9aad;
+}
+
+.photos img:hover {
+  transform: scale(1.1);
+}
+
+/* Sürpriz Kutusu */
+.surprise-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #292929;
+  border: 2px dashed #ff9aad;
+  color: #fff0f5;
+  animation: fadeIn 1s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animasyonlar */
+@keyframes heartFade {
+  0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.heart-fade {
+  animation: heartFade 1.5s ease forwards;
+}
+
+/* Yazıya parıltı efekti */
+.heart-fade {
+  text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff69b4;
 }
