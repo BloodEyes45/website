@@ -2,71 +2,42 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-  color: #fff;
+  background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+  color: #f5f5f5;
   overflow-x: hidden;
-  height: 100vh;
 }
 
 .container {
-  max-width: 700px;
+  max-width: 900px;
   margin: auto;
-  padding: 50px 20px;
+  padding: 40px 20px;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   text-align: center;
 }
 
-h1 {
-  font-size: 3em;
+h1, h2 {
   color: #ff69b4;
   text-shadow: 0 0 10px #ff69b4;
   margin-bottom: 20px;
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.1em;
+  line-height: 1.7;
   color: #ddd;
 }
 
-/* Sürpriz kutusu */
-.surprise-box button {
-  padding: 10px 20px;
-  font-size: 1em;
-  margin-top: 30px;
-  background-color: #ff69b4;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 0 15px #ff69b4;
-  transition: transform 0.3s ease;
-}
-
-.surprise-box button:hover {
-  transform: scale(1.1);
-}
-
-#surprise {
-  margin-top: 20px;
-  font-size: 1.2em;
-  color: #ffc0cb;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Kalp animasyonu */
+/* Kalp Animasyonları */
 .heart {
   position: absolute;
   width: 20px;
   height: 20px;
   background-color: #ff69b4;
   transform: rotate(45deg);
-  animation: float 8s infinite ease-in-out;
+  animation: float 6s infinite ease-in-out;
   border-radius: 4px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .heart::before, .heart::after {
