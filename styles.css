@@ -1,92 +1,71 @@
-/* Genel ayarlar */
 body {
   margin: 0;
+  padding: 0;
+  background-color: #1a1a2e;
+  color: #fff;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0d0d0d;
-  color: #ffffff;
-}
-
-.container {
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-}
-
-/* Başlıklar */
-h1, h2 {
-  color: #00ffee;
-}
-
-/* Liste */
-ul {
-  list-style: square;
-  margin-left: 20px;
-}
-
-/* 🚀 LOADER STİLİ */
-.loader-wrapper {
-  position: fixed;
-  inset: 0;
-  background-color: #0d0d0d;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
 }
 
-.loader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.content {
+  z-index: 2;
+  padding: 20px;
 }
 
-.loader .dot {
-  width: 20px;
-  height: 20px;
-  background-color: #00ffee;
-  border-radius: 50%;
-  animation: bounce 0.6s infinite alternate;
+h1 {
+  font-size: 2.5rem;
+  color: #ff5e78;
 }
 
-.loader .dots {
-  display: flex;
-  margin-left: 10px;
+p {
+  font-size: 1.3rem;
+  color: #ffc3d1;
 }
 
-.loader .dots span {
-  width: 10px;
-  height: 10px;
-  background-color: #00ffee;
-  border-radius: 50%;
-  margin: 0 3px;
-  opacity: 0.3;
-  animation: blink 1.2s infinite;
+/* Kalp animasyonu */
+.hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.loader .dots span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.loader .dots span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-/* Fade out */
-.fade-out {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s;
+.hearts::before, .hearts::after {
+  content: "💖💘💕💞💓💗";
+  position: absolute;
+  width: 100%;
+  font-size: 2rem;
+  animation: float 10s linear infinite;
+  opacity: 0.5;
 }
 
-/* Animasyonlar  */
-@keyframes bounce {
-  to {
-    transform: translateY(-10px);
+.hearts::after {
+  animation-delay: 5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
   }
 }
 
-@keyframes blink {
-  50% {
-    opacity: 1;
+/* Mobil uyumluluk */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
   }
 }
