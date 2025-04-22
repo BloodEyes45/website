@@ -32,7 +32,7 @@ body {
   margin-bottom: 2rem;
 }
 
-.music-btn, .love-btn {
+.music-btn, .love-btn, .surprise-btn {
   margin: 10px;
   padding: 12px 25px;
   background: #ff5e78;
@@ -44,20 +44,14 @@ body {
   transition: 0.3s ease;
 }
 
-.music-btn:hover, .love-btn:hover {
+.music-btn:hover, .love-btn:hover, .surprise-btn:hover {
   background: #ff7991;
 }
 
 .hidden-message {
   margin-top: 20px;
   display: none;
-  animation: fadeIn 2s forwards;
   font-size: 1.2rem;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .countdown {
@@ -75,8 +69,69 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url('https://r.resimlink.com/rKLlv.jpeg');
+  background-image: url('https://i.imgur.com/qI9Q9QV.gif'); /* ✔️ ÇALIŞAN KALP ANİMASYONLU BACKGROUND */
   background-size: cover;
+  background-position: center;
   opacity: 0.1;
   z-index: 0;
+}
+
+/* Galeri */
+.gallery {
+  margin-top: 40px;
+}
+
+.gallery h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.photos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.photos img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  border: 2px solid #ff9aad;
+}
+
+.photos img:hover {
+  transform: scale(1.1);
+}
+
+/* Sürpriz Kutusu */
+.surprise-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #292929;
+  border: 2px dashed #ff9aad;
+  color: #fff0f5;
+  animation: fadeIn 1s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animasyonlar */
+@keyframes heartFade {
+  0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.heart-fade {
+  animation: heartFade 1.5s ease forwards;
+}
+
+/* Yazıya parıltı efekti */
+.heart-fade {
+  text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff69b4;
 }
