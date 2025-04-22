@@ -1,71 +1,82 @@
-body {
+* {
   margin: 0;
   padding: 0;
-  background-color: #1a1a2e;
-  color: #fff;
+  box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #1e1e1e;
+  color: #ffc0cb;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   text-align: center;
+  overflow-x: hidden;
+  position: relative;
 }
 
-.content {
-  z-index: 2;
-  padding: 20px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  color: #ff5e78;
-}
-
-p {
-  font-size: 1.3rem;
-  color: #ffc3d1;
-}
-
-/* Kalp animasyonu */
-.hearts {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+.container {
+  padding: 2rem;
   z-index: 1;
 }
 
-.hearts::before, .hearts::after {
-  content: "💖💘💕💞💓💗";
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.music-btn, .love-btn {
+  margin: 10px;
+  padding: 12px 25px;
+  background: #ff5e78;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.music-btn:hover, .love-btn:hover {
+  background: #ff7991;
+}
+
+.hidden-message {
+  margin-top: 20px;
+  display: none;
+  animation: fadeIn 2s forwards;
+  font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.countdown {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #ffe4ec;
+}
+
+#timer {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.hearts-bg {
   position: absolute;
   width: 100%;
-  font-size: 2rem;
-  animation: float 10s linear infinite;
-  opacity: 0.5;
-}
-
-.hearts::after {
-  animation-delay: 5s;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-100vh) rotate(360deg);
-  }
-}
-
-/* Mobil uyumluluk */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
+  height: 100%;
+  background-image: url('https://i.imgur.com/3XtK7m3.gif');
+  background-size: cover;
+  opacity: 0.1;
+  z-index: 0;
 }
