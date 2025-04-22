@@ -2,15 +2,34 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Seni Çok Seviyorum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seni Çok Seviyorum ❤️</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="hearts"></div>
-  <div class="content">
-    <h1>💖 Sevgilim 💖</h1>
-    <p>Seni çooook seviyorum! 🥹🫶<br>Aşığımm Sanaa 💘</p>
+  <div class="hearts-bg"></div>
+
+  <div class="container">
+    <h1 class="title">💖 Seni Çok Seviyorum 💖</h1>
+    <p class="subtitle">Kalbim hep seninle 💘</p>
+
+    <button onclick="toggleMusic()" class="music-btn">🎵 Müziği Aç/Kapat</button>
+    <button onclick="showLoveMessage()" class="love-btn">💌 Sana Bir Mesajım Var</button>
+
+    <div id="love-message" class="hidden-message">
+      Sensiz bir hayat düşünemem, hep yanımda ol 💞
+    </div>
+
+    <div class="countdown">
+      <h3>Birlikte Geçirdiğimiz Süre:</h3>
+      <div id="timer">Yükleniyor...</div>
+    </div>
+
+    <audio id="bg-music" loop>
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
