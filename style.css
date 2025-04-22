@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a2e;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+}
+
+.content {
+  z-index: 2;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #ff5e78;
+}
+
+p {
+  font-size: 1.3rem;
+  color: #ffc3d1;
+}
+
+/* Kalp animasyonu */
+.hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hearts::before, .hearts::after {
+  content: "💖💘💕💞💓💗";
+  position: absolute;
+  width: 100%;
+  font-size: 2rem;
+  animation: float 10s linear infinite;
+  opacity: 0.5;
+}
+
+.hearts::after {
+  animation-delay: 5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+  }
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
