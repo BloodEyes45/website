@@ -16,7 +16,7 @@ function showLoveMessage() {
 }
 
 // Geri Sayım / Sayaç
-const startDate = new Date("2024-04-06T23:30:00"); // ilişkinin başladığı tarih
+const startDate = new Date("2024-04-06T00:00:00"); // ilişkinin başladığı tarih
 function updateCountdown() {
   const now = new Date();
   const diff = now - startDate;
