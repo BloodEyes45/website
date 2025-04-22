@@ -15,8 +15,13 @@ function showLoveMessage() {
   msg.style.display = "block";
 }
 
+function toggleSurprise() {
+  const box = document.getElementById("surprise-box");
+  box.classList.toggle("hidden");
+}
+
 // Geri Sayım / Sayaç
-const startDate = new Date("2024-04-06T00:00:00"); // ilişkinin başladığı tarih
+const startDate = new Date("2024-04-06T00:00:00");
 function updateCountdown() {
   const now = new Date();
   const diff = now - startDate;
