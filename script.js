@@ -20,7 +20,7 @@ function toggleSurprise() {
   box.classList.toggle("hidden");
 }
 
-// Geri Sayım / Sayaç
+// Geri Sayım
 const startDate = new Date("2024-04-06T00:00:00");
 function updateCountdown() {
   const now = new Date();
