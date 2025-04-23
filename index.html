@@ -5,33 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seni Çok Seviyorum ❤️</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
-
-  <!-- Kalpler -->
-  <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
-  <div class="heart" style="left: 30%; animation-delay: 2s;"></div>
-  <div class="heart" style="left: 50%; animation-delay: 4s;"></div>
-  <div class="heart" style="left: 70%; animation-delay: 6s;"></div>
-  <div class="heart" style="left: 90%; animation-delay: 1s;"></div>
-
   <div class="container">
-    <h1 class="typewriter">💖 Seni Çok Seviyorum 💖</h1>
-    <p class="subtitle flicker">Kalbim hep seninle 💘</p>
+    <h1 class="title heart-fade" data-aos="zoom-in">💖 Seni Çok Seviyorum 💖</h1>
+    <p class="subtitle heart-fade" data-aos="fade-up" data-aos-delay="200">Kalbim hep seninle 💘</p>
 
-    <button onclick="toggleMusic()" class="music-btn">🎵 Müziği Aç/Kapat</button>
-    <button onclick="showLoveMessage()" class="love-btn">💌 Sana Bir Mesajım Var</button>
-    <button onclick="toggleSurprise()" class="surprise-btn">🎁 Sürpriz Not</button>
+    <button onclick="toggleMusic()" class="music-btn" data-aos="fade-up" data-aos-delay="400">🎵 Müziği Aç/Kapat</button>
+    <button onclick="showLoveMessage()" class="love-btn" data-aos="fade-up" data-aos-delay="500">💌 Sana Bir Mesajım Var</button>
+    <button onclick="toggleSurprise()" class="surprise-btn" data-aos="fade-up" data-aos-delay="600">🎁 Sürpriz Not</button>
 
-    <div id="love-message" class="hidden-message heart-fade">
+    <div id="love-message" class="hidden-message heart-fade" data-aos="fade-in" data-aos-delay="700">
       Sensiz bir hayat düşünemem, hep yanımda ol 💞
     </div>
 
-    <div id="surprise-box" class="surprise-box hidden">
+    <div id="surprise-box" class="surprise-box hidden" data-aos="flip-down" data-aos-delay="800">
       <p>💗 Seni tanıdığım günden beri hayatımın en güzel günlerini yaşıyorum 💗</p>
     </div>
 
-    <div class="gallery">
+    <div class="gallery" data-aos="fade-up" data-aos-delay="900">
       <h2>🖼️ Hatıralarımız</h2>
       <div class="photos">
         <img src="https://r.resimlink.com/rKLlv.jpeg" alt="Birlikte Anı" />
@@ -40,7 +33,7 @@
       </div>
     </div>
 
-    <div class="countdown">
+    <div class="countdown" data-aos="zoom-in-up" data-aos-delay="1000">
       <h3 class="heart-fade">Birlikte Geçirdiğimiz Süre:</h3>
       <div id="timer" class="heart-fade">Yükleniyor...</div>
     </div>
@@ -50,6 +43,10 @@
     </audio>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
