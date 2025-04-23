@@ -1,5 +1,5 @@
 const music = document.getElementById("bg-music");
-let playing = false;
+let playing = false; 
 
 function toggleMusic() {
   if (playing) {
