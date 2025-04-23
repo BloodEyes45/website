@@ -6,35 +6,19 @@
 }
 
 body {
-  background: linear-gradient(-45deg, #ff5e78, #ffb6c1, #ffe4ec, #ff9aad);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-  color: #fff0f5;
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
+  background: linear-gradient(135deg, #1e1e1e, #3a0d5d);
+  color: #ffc0cb;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
 }
 
 .container {
-  text-align: center;
   padding: 2rem;
   z-index: 1;
-  position: relative;
 }
 
 .title {
@@ -47,6 +31,7 @@ body {
   margin-bottom: 2rem;
 }
 
+/* Butonlar */
 .music-btn, .love-btn, .surprise-btn {
   margin: 10px;
   padding: 12px 25px;
@@ -56,11 +41,17 @@ body {
   border-radius: 25px;
   font-size: 1rem;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .music-btn:hover, .love-btn:hover, .surprise-btn:hover {
   background: #ff7991;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 105, 135, 0.4);
+}
+
+.music-btn:active, .love-btn:active, .surprise-btn:active {
+  transform: scale(0.95);
 }
 
 .hidden-message {
@@ -80,6 +71,7 @@ body {
   font-size: 1.5rem;
 }
 
+/* Galeri */
 .gallery {
   margin-top: 40px;
 }
@@ -109,6 +101,7 @@ body {
   transform: scale(1.1);
 }
 
+/* Sürpriz Kutusu */
 .surprise-box {
   margin-top: 20px;
   padding: 15px;
@@ -123,40 +116,17 @@ body {
   display: none;
 }
 
+/* Yazı Parıltısı */
+.heart-fade {
+  animation: heartFade 1.5s ease forwards;
+  text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff69b4;
+}
+
 @keyframes heartFade {
   0% { opacity: 0; transform: translateY(30px) scale(0.9); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.heart-fade {
-  animation: heartFade 1.5s ease forwards;
-}
-
-.typewriter {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: .15em solid #ff69b4;
-  width: 0;
-  animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-.flicker {
-  animation: flickerAnim 2s infinite;
-}
-
-@keyframes flickerAnim {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
 
 /* Kalpler */
 .heart {
