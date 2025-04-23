@@ -6,20 +6,21 @@
 }
 
 body {
-  background: #1e1e1e;
+  background: #0d0d0d;
   color: #ffc0cb;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  text-align: center;
-  overflow-x: hidden;
-  position: relative;
 }
 
 .container {
+  text-align: center;
   padding: 2rem;
   z-index: 1;
+  position: relative;
 }
 
 .title {
@@ -65,18 +66,6 @@ body {
   font-size: 1.5rem;
 }
 
-.hearts-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://i.imgur.com/qI9Q9QV.gif'); /* ✔️ ÇALIŞAN KALP ANİMASYONLU BACKGROUND */
-  background-size: cover;
-  background-position: center;
-  opacity: 0.1;
-  z-index: 0;
-}
-
-/* Galeri */
 .gallery {
   margin-top: 40px;
 }
@@ -106,7 +95,6 @@ body {
   transform: scale(1.1);
 }
 
-/* Sürpriz Kutusu */
 .surprise-box {
   margin-top: 20px;
   padding: 15px;
@@ -121,7 +109,6 @@ body {
   display: none;
 }
 
-/* Animasyonlar */
 @keyframes heartFade {
   0% { opacity: 0; transform: translateY(30px) scale(0.9); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
@@ -131,7 +118,63 @@ body {
   animation: heartFade 1.5s ease forwards;
 }
 
-/* Yazıya parıltı efekti */
-.heart-fade {
-  text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff69b4;
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: .15em solid #ff69b4;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.flicker {
+  animation: flickerAnim 2s infinite;
+}
+
+@keyframes flickerAnim {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Kalpler */
+.heart {
+  position: fixed;
+  bottom: -30px;
+  width: 30px;
+  height: 30px;
+  background: url('https://i.imgur.com/ATk3K5v.png') no-repeat center/contain;
+  animation: floatUp 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+/* Yıldız Arka Plan */
+#stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, #222 0%, #000 100%);
+  background-image: url("https://i.gifer.com/BwG.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+  opacity: 0.15;
 }
