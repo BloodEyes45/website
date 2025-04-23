@@ -11,28 +11,50 @@ function toggleMusic() {
 }
 
 function showLoveMessage() {
-  const msg = document.getElementById("love-message");
-  msg.style.display = "block";
+  const message = document.getElementById("love-message");
+  message.classList.toggle("hidden");
 }
 
 function toggleSurprise() {
-  const box = document.getElementById("surprise-box");
-  box.classList.toggle("hidden");
+  const surpriseBox = document.getElementById("surprise-box");
+  surpriseBox.classList.toggle("hidden");
 }
 
-// Geri Sayım
-const startDate = new Date("2024-04-06T00:00:00");
-function updateCountdown() {
-  const now = new Date();
-  const diff = now - startDate;
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-  document.getElementById("timer").textContent =
-    `${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye geçti 💖`;
+function submitMessage() {
+  const messageBox = document.querySelector(".message-box textarea");
+  alert(`Mesajınız: ${messageBox.value}`);
 }
-setInterval(updateCountdown, 1000);
-updateCountdown();
+
+function revealSecret() {
+  const secretMessage = document.getElementById("secretMessage");
+  const password = document.getElementById("secretInput").value;
+
+  if (password === "06.06.2024") {
+    secretMessage.classList.remove("hidden");
+  } else {
+    alert("Yanlış şifre!");
+  }
+}
+
+// Countdown Timer
+let targetDate = new Date("2025-05-31T00:00:00").getTime();
+let timer = document.getElementById("timer");
+
+function updateTimer() {
+  let now = new Date().getTime();
+  let distance = targetDate - now;
+
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  timer.innerHTML = `${days}g ${hours}s ${minutes}d ${seconds}s`;
+
+  if (distance < 0) {
+    clearInterval(x);
+    timer.innerHTML = "Birlikte Zaman Geçirmeye Başladık!";
+  }
+}
+
+setInterval(updateTimer, 1000);
