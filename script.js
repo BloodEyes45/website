@@ -29,7 +29,7 @@ function revealSecret() {
   const secretMessage = document.getElementById("secretMessage");
   const password = document.getElementById("secretInput").value;
 
-  if (password === "06.06.2024") {
+  if (password === "060424") {
     secretMessage.classList.remove("hidden");
   } else {
     alert("Yanlış şifre!");
