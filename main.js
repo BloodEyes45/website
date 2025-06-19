@@ -5,6 +5,19 @@ let championData = null;
 let championIconBase = 'https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/';
 let championLoading = false;
 
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyBzVqheIZ-1OXPAb65MU2vFrx4Sgr9ehmI",
+  authDomain: "lol-win-lose-tracker.firebaseapp.com",
+  databaseURL: "https://lol-win-lose-tracker-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "lol-win-lose-tracker",
+  storageBucket: "lol-win-lose-tracker.appspot.com",
+  messagingSenderId: "948422840389",
+  appId: "1:948422840389:web:2397840c016aa80b06132c"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
 async function loadChampions() {
   if (championData || championLoading) return;
   championLoading = true;
@@ -37,20 +50,24 @@ function getChampionIcon(name) {
   return 'https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Aatrox.png';
 }
 
-function getMatches() {
-  return JSON.parse(localStorage.getItem('matches') || '[]');
+// Firebase ile çalışan fonksiyonlar
+function getMatches(callback) {
+  db.ref('matches').on('value', snap => {
+    const val = snap.val();
+    callback(val ? val : []);
+  });
 }
-
 function saveMatches(matches) {
-  localStorage.setItem('matches', JSON.stringify(matches));
+  db.ref('matches').set(matches);
 }
-
-function getNotes() {
-  return JSON.parse(localStorage.getItem('match_notes') || '{}');
+function getNotes(callback) {
+  db.ref('match_notes').on('value', snap => {
+    const val = snap.val();
+    callback(val ? val : {});
+  });
 }
-
 function saveNotes(notes) {
-  localStorage.setItem('match_notes', JSON.stringify(notes));
+  db.ref('match_notes').set(notes);
 }
 
 function updateWinrateBar(winrate) {
@@ -65,62 +82,18 @@ function updateWinrateBar(winrate) {
   }
 }
 
-async function renderMatchesTable(matches) {
-  await loadChampions();
-  const tbody = document.getElementById('matches-tbody');
-  const notes = getNotes();
-  tbody.innerHTML = '';
-  matches.forEach((m, i) => {
-    const tr = document.createElement('tr');
-    tr.className = m.result === 'win' ? 'win-row' : 'lose-row';
-    // Şampiyon ikonları
-    const myIcon = `<img src="${getChampionIcon(m.myChampion)}" alt="${m.myChampion}" class="champ-icon" title="${m.myChampion}" />`;
-    const cousinIcon = `<img src="${getChampionIcon(m.cousinChampion)}" alt="${m.cousinChampion}" class="champ-icon" title="${m.cousinChampion}" />`;
-    // Maç linki ikonu
-    const linkIcon = `<a href="${m.link}" target="_blank" title="Maç Linki"><svg class="match-link-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 14L21 3M21 3v7m0-7h-7"/><path d="M21 14v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4"/></svg></a>`;
-    // Not input
-    const noteVal = notes[i] || '';
-    const noteInput = `<input type="text" class="match-note-input" data-index="${i}" value="${noteVal}" placeholder="Not ekle..." maxlength="60" />`;
-    // Satır
-    tr.innerHTML = `
-      <td>${myIcon} ${m.myChampion}</td>
-      <td>${cousinIcon} ${m.cousinChampion}</td>
-      <td><b>${m.result === 'win' ? 'Win' : 'Lose'}</b> ${linkIcon}</td>
-      <td>${noteInput}</td>
-      <td><button class="delete-match-btn" data-index="${i}">Sil</button></td>
-    `;
-    tbody.appendChild(tr);
-    setTimeout(() => { tr.classList.remove('win-row', 'lose-row'); }, 1200);
-  });
-  // Silme butonları
-  document.querySelectorAll('.delete-match-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const idx = parseInt(this.getAttribute('data-index'), 10);
-      const matches = getMatches();
-      matches.splice(idx, 1);
-      saveMatches(matches);
-      updateStats(matches);
-      renderMatchesTable(matches);
-      const notes = getNotes();
-      delete notes[idx];
-      saveNotes(notes);
-    });
-  });
-  // Not inputları
-  document.querySelectorAll('.match-note-input').forEach(input => {
-    input.addEventListener('change', function() {
-      const idx = this.getAttribute('data-index');
-      const notes = getNotes();
-      notes[idx] = this.value;
-      saveNotes(notes);
-    });
-  });
-}
-
-// Sayfa yüklenince verileri göster
-const matches = getMatches();
-updateStats(matches);
-renderMatchesTable(matches);
+// Maçları ve notları dinle, güncel tut
+let currentMatches = [];
+let currentNotes = {};
+getMatches(matches => {
+  currentMatches = matches;
+  updateStats(matches);
+  renderMatchesTable(matches, currentNotes);
+});
+getNotes(notes => {
+  currentNotes = notes;
+  renderMatchesTable(currentMatches, notes);
+});
 
 document.getElementById('add-match-btn').addEventListener('click', addMatch);
 
@@ -133,11 +106,9 @@ function addMatch() {
   if (result !== 'win' && result !== 'lose') return alert('Sonuç win veya lose olmalı!');
   const link = prompt('Maçın Porofessor linki?');
   if (!link) return;
-  const matches = getMatches();
+  const matches = currentMatches.slice();
   matches.unshift({ myChampion, cousinChampion, result, link });
   saveMatches(matches);
-  updateStats(matches);
-  renderMatchesTable(matches);
 }
 
 function calculateStreaks(matches) {
@@ -212,4 +183,45 @@ function updateTopChampion(matches) {
     }
   }
   document.getElementById('champion-name').textContent = top;
+}
+
+async function renderMatchesTable(matches, notes) {
+  await loadChampions();
+  const tbody = document.getElementById('matches-tbody');
+  notes = notes || {};
+  tbody.innerHTML = '';
+  matches.forEach((m, i) => {
+    const tr = document.createElement('tr');
+    tr.className = m.result === 'win' ? 'win-row' : 'lose-row';
+    const myIcon = `<img src="${getChampionIcon(m.myChampion)}" alt="${m.myChampion}" class="champ-icon" title="${m.myChampion}" />`;
+    const cousinIcon = `<img src="${getChampionIcon(m.cousinChampion)}" alt="${m.cousinChampion}" class="champ-icon" title="${m.cousinChampion}" />`;
+    const linkIcon = `<a href="${m.link}" target="_blank" title="Maç Linki"><svg class="match-link-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 14L21 3M21 3v7m0-7h-7"/><path d="M21 14v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4"/></svg></a>`;
+    const noteVal = notes[i] || '';
+    const noteInput = `<input type="text" class="match-note-input" data-index="${i}" value="${noteVal}" placeholder="Not ekle..." maxlength="60" />`;
+    tr.innerHTML = `
+      <td>${myIcon} ${m.myChampion}</td>
+      <td>${cousinIcon} ${m.cousinChampion}</td>
+      <td><b>${m.result === 'win' ? 'Win' : 'Lose'}</b> ${linkIcon}</td>
+      <td>${noteInput}</td>
+      <td><button class="delete-match-btn" data-index="${i}">Sil</button></td>
+    `;
+    tbody.appendChild(tr);
+    setTimeout(() => { tr.classList.remove('win-row', 'lose-row'); }, 1200);
+  });
+  document.querySelectorAll('.delete-match-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const idx = parseInt(this.getAttribute('data-index'), 10);
+      const matches = currentMatches.slice();
+      matches.splice(idx, 1);
+      saveMatches(matches);
+    });
+  });
+  document.querySelectorAll('.match-note-input').forEach(input => {
+    input.addEventListener('change', function() {
+      const idx = this.getAttribute('data-index');
+      const notes = Object.assign({}, currentNotes);
+      notes[idx] = this.value;
+      saveNotes(notes);
+    });
+  });
 } 
