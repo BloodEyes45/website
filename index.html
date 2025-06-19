@@ -1,73 +1,74 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seni Çok Seviyorum ❤️</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> <!-- AOS.js Kütüphanesi -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoL Win/Lose Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Kalpler -->
-  <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
-  <div class="heart" style="left: 30%; animation-delay: 2s;"></div>
-  <div class="heart" style="left: 50%; animation-delay: 4s;"></div>
-  <div class="heart" style="left: 70%; animation-delay: 6s;"></div>
-  <div class="heart" style="left: 90%; animation-delay: 1s;"></div>
-
-  <div class="container">
-    <h1 class="title heart-fade">💖 Seni Çok Seviyorum 💖</h1>
-    <p class="subtitle heart-fade">Kalbim hep seninle 💘</p>
-
-    <button onclick="toggleMusic()" class="music-btn">🎵 Müziği Aç/Kapat</button>
-    <button onclick="showLoveMessage()" class="love-btn">💌 Sana Bir Mesajım Var</button>
-    <button onclick="toggleSurprise()" class="surprise-btn">🎁 Sürpriz Not</button>
-
-    <div id="love-message" class="hidden-message heart-fade">
-      Sensiz bir hayat düşünemem, hep yanımda ol 💞
-    </div>
-
-    <div id="surprise-box" class="surprise-box hidden">
-      <p>💗 Seni tanıdığım günden beri hayatımın en güzel günlerini yaşıyorum 💗</p>
-    </div>
-
-    <div class="gallery">
-      <h2>🖼️ Hatıralarımız</h2>
-      <div class="photos">
-        <img src="https://r.resimlink.com/rKLlv.jpeg" alt="Birlikte Anı" />
-        <img src="https://r.resimlink.com/CF1m8XntuH.jpeg" alt="Birlikte Anı" />
-        <img src="https://r.resimlink.com/eQ7xBjE.jpeg" alt="Birlikte Anı" />
+  <div class="dashboard-header">
+    <h1>LoL Win/Lose Dashboard</h1>
+    <div class="dashboard-panels">
+      <div class="panel" id="panel-total">
+        <div class="panel-label">Toplam Maç</div>
+        <div class="panel-value" id="total-matches">0</div>
+      </div>
+      <div class="panel" id="panel-win">
+        <div class="panel-label">Win</div>
+        <div class="panel-value" id="total-wins">0</div>
+      </div>
+      <div class="panel" id="panel-lose">
+        <div class="panel-label">Lose</div>
+        <div class="panel-value" id="total-loses">0</div>
+      </div>
+      <div class="panel" id="panel-winrate">
+        <div class="panel-label">Winrate</div>
+        <div class="panel-value" id="winrate">0%</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="winrate-bar"></div></div>
       </div>
     </div>
-
-    <div class="countdown">
-      <h3 class="heart-fade">Birlikte Geçirdiğimiz Süre:</h3>
-      <div id="timer" class="heart-fade">Yükleniyor...</div>
-    </div>
-
-    <!-- Ziyaretçi Mesaj Kutusu -->
-    <div class="message-box">
-      <h3>💬 Mesajını Yaz:</h3>
-      <textarea placeholder="Duygularını buraya yazabilirsin..."></textarea>
-      <button onclick="submitMessage()">Gönder</button>
-    </div>
-
-    <!-- Şifreli Kalp Bölümü -->
-    <div class="secret-box">
-      <h3>🔐 Gizli Mesaj</h3>
-      <input type="password" id="secretInput" placeholder="Şifreyi gir">
-      <button onclick="revealSecret()">Göster</button>
-      <div id="secretMessage" class="hidden">
-        💗 Doğru bildin! Bu kalp hep senin için atıyor! 💗
+    <div class="dashboard-panels streak-panels-row">
+      <div class="panel streak-panel" id="panel-current-win-streak">
+        <div class="panel-label">Şu Anki Win Streak</div>
+        <div class="panel-value" id="current-win-streak">0</div>
+      </div>
+      <div class="panel streak-panel" id="panel-current-lose-streak">
+        <div class="panel-label">Şu Anki Lose Streak</div>
+        <div class="panel-value" id="current-lose-streak">0</div>
+      </div>
+      <div class="panel streak-panel" id="panel-best-win-streak">
+        <div class="panel-label">En Uzun Win Streak</div>
+        <div class="panel-value" id="best-win-streak">0</div>
+      </div>
+      <div class="panel streak-panel" id="panel-best-lose-streak">
+        <div class="panel-label">En Uzun Lose Streak</div>
+        <div class="panel-value" id="best-lose-streak">0</div>
       </div>
     </div>
-
-    <audio id="bg-music" loop>
-      <source src="music.mp3" type="audio/mpeg" />
-    </audio>
   </div>
-
-  <script src="script.js"></script>
+  <div class="dashboard-main">
+    <div class="dashboard-actions">
+      <button id="add-match-btn">+ Maç Ekle</button>
+    </div>
+    <div class="table-container">
+      <table id="matches-table">
+        <thead>
+          <tr>
+            <th>Semih</th>
+            <th>Kağan</th>
+            <th>Sonuç</th>
+            <th>Not</th>
+            <th>Sil</th>
+          </tr>
+        </thead>
+        <tbody id="matches-tbody">
+          <!-- Maçlar buraya gelecek -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="confetti-container"></div>
+  <script src="main.js"></script>
 </body>
-</html>
+</html> 
