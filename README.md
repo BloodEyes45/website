@@ -11,13 +11,14 @@ League of Legends Win/Lose Takip Paneli
 - **Win/Lose Animasyonları:** Satırda win için yeşil, lose için kırmızı gradient ve animasyon.
 - **Not Ekleme:** Her maça kısa not ekleyebilme.
 - **Gerçek zamanlı silme ve not güncelleme.**
+- **Modern Modal ile Maç Ekleme:** Prompt yerine şık bir açılır pencere (modal) ile maç ekleme formu.
 
 ## Kullanım
 
 1. **Siteyi açın:**
    - https://bloodeyes45.github.io/website/
 2. **Maç ekleyin:**
-   - "+" Maç Ekle" butonuna tıklayın, karakterleri, sonucu ve maç linkini girin.
+   - "+" Maç Ekle" butonuna tıklayın, açılan pencerede karakterleri, sonucu ve maç linkini girin.
 3. **Not ekleyin:**
    - Her maç satırında not kutusuna tıklayarak kısa not ekleyebilirsiniz.
 4. **Silme:**
