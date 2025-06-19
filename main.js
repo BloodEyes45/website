@@ -112,38 +112,41 @@ function addMatch() {
 }
 
 function calculateStreaks(matches) {
+  // Şu anki streak: en baştan (en yeni maçtan) başlayarak win/lose streak sayılır
   let currentWin = 0, currentLose = 0;
   let bestWin = 0, bestLose = 0;
   let tempWin = 0, tempLose = 0;
-  let last = null;
+  // Şu anki streak
   for (let i = 0; i < matches.length; i++) {
     if (matches[i].result === 'win') {
-      if (last === 'win') {
-        tempWin++;
-      } else {
-        tempWin = 1;
-      }
+      if (i === 0 || matches[i-1].result === 'win') currentWin++;
+      else break;
+    } else {
+      break;
+    }
+  }
+  for (let i = 0; i < matches.length; i++) {
+    if (matches[i].result === 'lose') {
+      if (i === 0 || matches[i-1].result === 'lose') currentLose++;
+      else break;
+    } else {
+      break;
+    }
+  }
+  // En uzun streakler (tüm listeyi gez)
+  tempWin = 0; tempLose = 0;
+  for (let i = 0; i < matches.length; i++) {
+    if (matches[i].result === 'win') {
+      tempWin++;
+      bestWin = Math.max(bestWin, tempWin);
       tempLose = 0;
     } else if (matches[i].result === 'lose') {
-      if (last === 'lose') {
-        tempLose++;
-      } else {
-        tempLose = 1;
-      }
+      tempLose++;
+      bestLose = Math.max(bestLose, tempLose);
       tempWin = 0;
-    }
-    if (tempWin > bestWin) bestWin = tempWin;
-    if (tempLose > bestLose) bestLose = tempLose;
-    last = matches[i].result;
-  }
-  // Son maçın streak'i aktif streaktir
-  if (matches.length > 0) {
-    if (matches[matches.length-1].result === 'win') {
-      currentWin = tempWin;
-      currentLose = 0;
-    } else if (matches[matches.length-1].result === 'lose') {
-      currentLose = tempLose;
-      currentWin = 0;
+    } else {
+      tempWin = 0;
+      tempLose = 0;
     }
   }
   return { currentWin, currentLose, bestWin, bestLose };
