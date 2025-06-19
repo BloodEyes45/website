@@ -95,21 +95,42 @@ getNotes(notes => {
   renderMatchesTable(currentMatches, notes);
 });
 
-document.getElementById('add-match-btn').addEventListener('click', addMatch);
+// Modal açma/kapatma ve form işlemleri
+const addMatchModal = document.getElementById('add-match-modal');
+const addMatchForm = document.getElementById('add-match-form');
+const modalMyChampion = document.getElementById('modal-my-champion');
+const modalCousinChampion = document.getElementById('modal-cousin-champion');
+const modalResult = document.getElementById('modal-result');
+const modalLink = document.getElementById('modal-link');
+const modalAddBtn = document.getElementById('modal-add-btn');
+const modalCancelBtn = document.getElementById('modal-cancel-btn');
 
-function addMatch() {
-  const myChampion = prompt('Senin oynadığın karakter?');
-  if (!myChampion) return;
-  const cousinChampion = prompt('Kuzenin oynadığı karakter?');
-  if (!cousinChampion) return;
-  const result = prompt('Sonuç? (win/lose)').toLowerCase();
-  if (result !== 'win' && result !== 'lose') return alert('Sonuç win veya lose olmalı!');
-  const link = prompt('Maçın Porofessor linki?');
-  if (!link) return;
+function openAddMatchModal() {
+  addMatchModal.style.display = 'flex';
+  addMatchForm.reset();
+  modalMyChampion.focus();
+}
+function closeAddMatchModal() {
+  addMatchModal.style.display = 'none';
+}
+
+document.getElementById('add-match-btn').addEventListener('click', openAddMatchModal);
+modalCancelBtn.addEventListener('click', closeAddMatchModal);
+addMatchModal.addEventListener('click', function(e) {
+  if (e.target === addMatchModal) closeAddMatchModal();
+});
+addMatchForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const myChampion = modalMyChampion.value.trim();
+  const cousinChampion = modalCousinChampion.value.trim();
+  const result = modalResult.value;
+  const link = modalLink.value.trim();
+  if (!myChampion || !cousinChampion || !result || !link) return;
   const matches = currentMatches.slice();
   matches.unshift({ myChampion, cousinChampion, result, link });
   saveMatches(matches);
-}
+  closeAddMatchModal();
+});
 
 function calculateStreaks(matches) {
   // Şu anki streak: en baştan (en yeni maçtan) başlayarak win/lose streak sayılır
