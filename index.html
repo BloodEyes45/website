@@ -69,6 +69,35 @@
     </div>
   </div>
   <div id="confetti-container"></div>
+
+  <!-- Maç Ekle Modal -->
+  <div id="add-match-modal" class="modal-bg" style="display:none;">
+    <div class="modal">
+      <h2>Yeni Maç Ekle</h2>
+      <form id="add-match-form">
+        <label>Senin karakterin:<br>
+          <input type="text" id="modal-my-champion" required autocomplete="off">
+        </label><br>
+        <label>Kuzenin karakteri:<br>
+          <input type="text" id="modal-cousin-champion" required autocomplete="off">
+        </label><br>
+        <label>Sonuç:<br>
+          <select id="modal-result" required>
+            <option value="win">Win</option>
+            <option value="lose">Lose</option>
+          </select>
+        </label><br>
+        <label>Maç Linki:<br>
+          <input type="url" id="modal-link" required autocomplete="off" placeholder="https://...">
+        </label><br>
+        <div class="modal-actions">
+          <button type="submit" id="modal-add-btn">Ekle</button>
+          <button type="button" id="modal-cancel-btn">İptal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Firebase App (core) -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <!-- Firebase Realtime Database -->
